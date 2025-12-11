@@ -1,7 +1,3 @@
-/**
- * Bài 1a: Viết chương trình tính diện tích (S) và chu vi (P) của hình vuông khi nhập chiều dài cạnh.
- */
-
 function tinhChuViDienTichHinhVuong(canh) {
   if (typeof canh !== "number" || canh <= 0) {
     return "Vui lòng nhập một số dương cho chiều dài cạnh.";
@@ -15,11 +11,9 @@ function tinhChuViDienTichHinhVuong(canh) {
 - Diện tích: ${dienTich}`;
 }
 
-// Mở comment để chạy test với input tĩnh
 const canhHinhVuong = 5;
 console.log(tinhChuViDienTichHinhVuong(canhHinhVuong));
 
-// Để nhận input từ người dùng trong môi trường Node.js, bạn có thể dùng code sau:
 const readline = require("readline").createInterface({
   input: process.stdin,
   output: process.stdout,
