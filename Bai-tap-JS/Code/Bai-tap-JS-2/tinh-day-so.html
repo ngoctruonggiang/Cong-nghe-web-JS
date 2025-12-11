@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tinh toan tren day so</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      background: #fbe9c4;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      padding: 30px 16px 40px;
+    }
+    .stage {
+      width: 460px;
+      background: #fbe2b6;
+      border: 1px solid #c99f5e;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+    }
+    .stage-header {
+      background: #f5b656;
+      color: #6b2b0e;
+      text-align: center;
+      font-size: 24px;
+      padding: 12px 10px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+    .body-content {
+      padding: 14px 20px 12px;
+    }
+    .limit-row {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .limit-row span.label {
+      font-weight: 600;
+      color: #5b3f1c;
+      min-width: 150px;
+    }
+    .limit-row span.inline-label {
+      font-weight: 600;
+      color: #3f2c1a;
+    }
+    .limit-row input {
+      width: 70px;
+      padding: 6px 8px;
+      border: 1px solid #a17540;
+      font-size: 14px;
+      text-align: center;
+    }
+    .section-title {
+      color: #7a2b08;
+      font-weight: 700;
+      margin: 10px 0 6px;
+    }
+    .result-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+    .result-row label {
+      min-width: 150px;
+      font-weight: 600;
+      color: #4c2d14;
+    }
+    .result-row input {
+      flex: 1;
+      padding: 8px 10px;
+      border: 1px solid #cb7f71;
+      background: #f9c9c6;
+      color: #581515;
+      font-weight: 600;
+    }
+    button {
+      width: 130px;
+      margin: 8px auto 0;
+      display: block;
+      padding: 8px 0;
+      font-weight: 700;
+      font-size: 15px;
+      color: #3e210d;
+      background: #f5b656;
+      border: 1px solid #a0652e;
+      cursor: pointer;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+    button:hover {
+      transform: translateY(-1px);
+    }
+    .error {
+      min-height: 18px;
+      color: #b00020;
+      text-align: center;
+      font-weight: 600;
+      margin-top: 6px;
+    }
+  </style>
+</head>
+<body>
+  <div class="stage">
+    <div class="stage-header">TINH TOAN TREN DAY SO</div>
+    <div class="body-content">
+      <div class="limit-row">
+        <span class="label">Gioi han cua day so:</span>
+        <span class="inline-label">So bat dau:</span>
+        <input type="number" id="start" value="1" min="1" />
+        <span class="inline-label">So ket thuc:</span>
+        <input type="number" id="end" value="10" min="1" />
+      </div>
+      <p class="section-title">Ket qua:</p>
+      <div class="result-row">
+        <label for="sum">Tong cac so:</label>
+        <input type="text" id="sum" readonly />
+      </div>
+      <div class="result-row">
+        <label for="product">Tich cac so:</label>
+        <input type="text" id="product" readonly />
+      </div>
+      <div class="result-row">
+        <label for="evenSum">Tong cac so chan:</label>
+        <input type="text" id="evenSum" readonly />
+      </div>
+      <div class="result-row">
+        <label for="oddSum">Tong cac so le:</label>
+        <input type="text" id="oddSum" readonly />
+      </div>
+      <button id="calcBtn">Tinh toan</button>
+      <div class="error" id="error"></div>
+    </div>
+  </div>
+
+  <script>
+    const startInput = document.getElementById('start');
+    const endInput = document.getElementById('end');
+    const sumInput = document.getElementById('sum');
+    const productInput = document.getElementById('product');
+    const evenSumInput = document.getElementById('evenSum');
+    const oddSumInput = document.getElementById('oddSum');
+    const errorBox = document.getElementById('error');
+    const calcBtn = document.getElementById('calcBtn');
+
+    function clearOutputs() {
+      sumInput.value = '';
+      productInput.value = '';
+      evenSumInput.value = '';
+      oddSumInput.value = '';
+    }
+
+    function calcRange() {
+      const startVal = parseInt(startInput.value, 10);
+      const endVal = parseInt(endInput.value, 10);
+
+      if (Number.isNaN(startVal) || Number.isNaN(endVal)) {
+        errorBox.textContent = 'Vui long nhap so bat dau va ket thuc hop le.';
+        clearOutputs();
+        return;
+      }
+      if (startVal > endVal) {
+        errorBox.textContent = 'So bat dau phai nho hon hoac bang so ket thuc.';
+        clearOutputs();
+        return;
+      }
+      errorBox.textContent = '';
+
+      let sum = 0;
+      let product = 1;
+      let evenSum = 0;
+      let oddSum = 0;
+
+      for (let i = startVal; i <= endVal; i += 1) {
+        sum += i;
+        product *= i;
+        if (i % 2 === 0) {
+          evenSum += i;
+        } else {
+          oddSum += i;
+        }
+      }
+
+      sumInput.value = sum;
+      productInput.value = product;
+      evenSumInput.value = evenSum;
+      oddSumInput.value = oddSum;
+    }
+
+    function handleEnter(event) {
+      if (event.key === 'Enter') {
+        calcRange();
+      }
+    }
+
+    startInput.addEventListener('keydown', handleEnter);
+    endInput.addEventListener('keydown', handleEnter);
+    calcBtn.addEventListener('click', calcRange);
+
+    calcRange();
+  </script>
+</body>
+</html>

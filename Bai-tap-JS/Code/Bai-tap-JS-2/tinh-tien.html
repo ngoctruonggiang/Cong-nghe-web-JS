@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tinh tien</title>
+  <style>
+    body {
+      margin: 0;
+      background: #d4e5f6;
+      font-family: Tahoma, "Segoe UI", sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      font-size: 11px;
+      color: #1f2e4f;
+    }
+    .dialog {
+      width: 620px;
+      background: #f8fbff;
+      border: 2px solid #0a3d87;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      position: relative;
+    }
+    .dialog::after {
+      content: "";
+      position: absolute;
+      inset: 1px;
+      border: 1px solid #ffffff;
+      pointer-events: none;
+    }
+    .title-bar {
+      height: 28px;
+      background: linear-gradient(#4b8fe1, #1f5dab);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      padding: 0 8px;
+      box-sizing: border-box;
+      font-weight: 700;
+      font-size: 12px;
+      letter-spacing: 0.2px;
+    }
+    .title-bar .icon {
+      width: 14px;
+      height: 14px;
+      margin-right: 8px;
+      background: #ffc107;
+      border: 1px solid #a86d00;
+      box-sizing: border-box;
+    }
+    .title-bar .controls {
+      margin-left: auto;
+      display: flex;
+      gap: 4px;
+    }
+    .title-bar .btn {
+      width: 14px;
+      height: 14px;
+      border: 1px solid #08306b;
+      background: #f4f4f4;
+      position: relative;
+    }
+    .title-bar .btn.close::after {
+      content: "x";
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      color: #b60000;
+      font-weight: 700;
+      font-size: 11px;
+    }
+    .title-bar .btn.min::after {
+      content: "_";
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      color: #08306b;
+      font-weight: 700;
+      font-size: 11px;
+    }
+    .body {
+      padding: 12px 14px 16px;
+    }
+    .content {
+      display: flex;
+      gap: 12px;
+      justify-content: space-between;
+    }
+    .panel {
+      flex: 1;
+      padding: 6px;
+      background: #ffffff;
+    }
+    .panel h2 {
+      margin: 0 0 6px;
+      font-size: 14px;
+      color: #083177;
+      font-weight: 700;
+    }
+    select {
+      width: 100%;
+      height: 180px;
+      border: 1px solid #5168a6;
+      padding: 4px;
+      font-size: 13px;
+      box-sizing: border-box;
+    }
+    .controls {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 6px;
+    }
+    .controls button {
+      width: 52px;
+      height: 26px;
+      background: #e0e0e0;
+      border: 1px solid #4f4f4f;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 12px;
+      box-shadow: inset 0 1px 0 #ffffff, 0 1px 2px rgba(0,0,0,0.2);
+    }
+    .controls button:hover {
+      filter: brightness(0.97);
+    }
+    .actions {
+      margin-top: 12px;
+      display: flex;
+      justify-content: flex-start;
+      gap: 12px;
+      align-items: center;
+      padding-left: 6px;
+    }
+    .actions button {
+      font-size: 12px;
+      font-weight: 700;
+      padding: 7px 16px;
+      border: 1px solid #4f4f4f;
+      background: #e0e0e0;
+      cursor: pointer;
+      box-shadow: inset 0 1px 0 #ffffff, 0 2px 3px rgba(0,0,0,0.2);
+    }
+    .actions button:hover {
+      filter: brightness(0.97);
+    }
+    .summary {
+      font-weight: 700;
+      color: #0c3a8a;
+      min-height: 22px;
+    }
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.15);
+      display: none;
+      align-items: center;
+      justify-content: center;
+    }
+    .modal {
+      width: 260px;
+      background: #f5f1de;
+      border: 3px solid #0a4aa6;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+      padding: 12px;
+      font-family: Tahoma, "Segoe UI", sans-serif;
+      color: #1f1f1f;
+    }
+    .modal h3 {
+      margin: 0 0 8px;
+      font-size: 12px;
+      color: #1e1e1e;
+      font-weight: 700;
+    }
+    .modal pre {
+      margin: 0 0 12px;
+      font-family: inherit;
+      white-space: pre-wrap;
+      font-size: 11px;
+      color: #1e1e1e;
+    }
+    .modal .close-btn {
+      display: block;
+      margin: 0 auto;
+      padding: 5px 12px;
+      border: 1px solid #2c2c2c;
+      background: #dcdcdc;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 11px;
+    }
+  </style>
+</head>
+<body>
+  <div class="dialog">
+    <div class="title-bar">
+      <div class="icon"></div>
+      <span>Tinh tien</span>
+      <div class="controls">
+        <div class="btn min" aria-hidden="true"></div>
+        <div class="btn close" aria-hidden="true"></div>
+      </div>
+    </div>
+    <div class="body">
+    <div class="content">
+      <div class="panel">
+        <h2>Thuc don tiec</h2>
+        <select id="menuList" multiple></select>
+      </div>
+      <div class="controls">
+        <button id="moveRight">&gt;</button>
+        <button id="moveAllRight">&gt;&gt;</button>
+        <button id="moveLeft">&lt;</button>
+        <button id="moveAllLeft">&lt;&lt;</button>
+      </div>
+      <div class="panel">
+        <h2>Danh sach mon an chon</h2>
+        <select id="selectedList" multiple></select>
+      </div>
+    </div>
+    <div class="actions">
+      <button id="calculate">Tinh tien</button>
+      <span class="summary" id="summary">So tien thanh toan la: ...</span>
+    </div>
+    </div>
+  </div>
+  <div class="modal-backdrop" id="modalBackdrop">
+    <div class="modal">
+      <h3>Chi tiet don gia cac mon an:</h3>
+      <pre id="modalContent"></pre>
+      <button class="close-btn" id="modalClose">OK</button>
+    </div>
+  </div>
+
+  <script>
+    const menuList = document.getElementById('menuList');
+    const selectedList = document.getElementById('selectedList');
+    const moveRight = document.getElementById('moveRight');
+    const moveAllRight = document.getElementById('moveAllRight');
+    const moveLeft = document.getElementById('moveLeft');
+    const moveAllLeft = document.getElementById('moveAllLeft');
+    const calculate = document.getElementById('calculate');
+    const summary = document.getElementById('summary');
+    const modalBackdrop = document.getElementById('modalBackdrop');
+    const modalContent = document.getElementById('modalContent');
+    const modalClose = document.getElementById('modalClose');
+
+    const dishes = [
+      { name: 'Bo nau dau Ha Lan', price: 100000 },
+      { name: 'Cha gio tom', price: 100000 },
+      { name: 'Che hat sen', price: 100000 },
+      { name: 'Com duong chau', price: 100000 },
+      { name: 'Goi ngo sen', price: 100000 },
+      { name: 'Lau ca dieu hong', price: 100000 },
+      { name: 'Lau Thai Lan', price: 100000 },
+      { name: 'Ga hap chao', price: 100000 },
+      { name: 'Heo sua quay', price: 100000 },
+      { name: 'Khai vi', price: 100000 },
+      { name: 'Lau hai san', price: 100000 },
+      { name: 'Trai cay', price: 100000 }
+    ];
+
+    function createOption(item) {
+      const opt = document.createElement('option');
+      opt.value = item.name;
+      opt.textContent = item.name;
+      opt.dataset.price = item.price;
+      return opt;
+    }
+
+    function populateMenu() {
+      menuList.innerHTML = '';
+      dishes.forEach(item => {
+        menuList.appendChild(createOption(item));
+      });
+    }
+
+    function moveOptions(source, target, selectAll = false) {
+      const options = Array.from(source.options);
+      for (const option of options) {
+        if (selectAll || option.selected) {
+          target.appendChild(option);
+        }
+      }
+    }
+
+    function resetSummary() {
+      summary.textContent = 'So tien thanh toan la: ...';
+    }
+
+    function calculateTotal() {
+      const options = Array.from(selectedList.options);
+      if (options.length === 0) {
+        summary.textContent = 'So tien thanh toan la: 0 đồng';
+        alert('Chua co mon nao duoc chon.');
+        return;
+      }
+      let total = 0;
+      const lines = [];
+      options.forEach(option => {
+        const price = Number(option.dataset.price);
+        total += price;
+        lines.push(`${option.value} - ${price.toLocaleString()} đồng`);
+      });
+      summary.textContent = `So tien thanh toan la: ${total.toLocaleString()} đồng`;
+      modalContent.textContent = lines.join('\n');
+      modalBackdrop.style.display = 'flex';
+    }
+
+    function closeModal() {
+      modalBackdrop.style.display = 'none';
+    }
+
+    moveRight.addEventListener('click', () => {
+      moveOptions(menuList, selectedList);
+      resetSummary();
+    });
+    moveAllRight.addEventListener('click', () => {
+      moveOptions(menuList, selectedList, true);
+      resetSummary();
+    });
+    moveLeft.addEventListener('click', () => {
+      moveOptions(selectedList, menuList);
+      resetSummary();
+    });
+    moveAllLeft.addEventListener('click', () => {
+      moveOptions(selectedList, menuList, true);
+      resetSummary();
+    });
+    calculate.addEventListener('click', calculateTotal);
+    modalClose.addEventListener('click', closeModal);
+    modalBackdrop.addEventListener('click', (e) => {
+      if (e.target === modalBackdrop) closeModal();
+    });
+
+    populateMenu();
+  </script>
+</body>
+</html>

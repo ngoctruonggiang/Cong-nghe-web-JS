@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dien tich hinh chu nhat</title>
+  <style>
+    body {
+      font-family: Georgia, "Times New Roman", serif;
+      background: #f4e6c8;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 40px 16px;
+    }
+    .card {
+      background: #f5d9ab;
+      border: 1px solid #c59f6b;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+      padding: 20px 22px 24px;
+      max-width: 380px;
+      width: 100%;
+    }
+    h1 {
+      margin: 0 0 18px;
+      text-align: center;
+      color: #a24f17;
+      font-size: 24px;
+      letter-spacing: 1px;
+    }
+    .row {
+      display: flex;
+      align-items: center;
+      margin-bottom: 12px;
+      gap: 10px;
+    }
+    label {
+      width: 90px;
+      color: #5d4125;
+      font-weight: 600;
+    }
+    input {
+      flex: 1;
+      padding: 6px 8px;
+      border: 1px solid #b0a48a;
+      border-radius: 2px;
+      font-size: 15px;
+      box-sizing: border-box;
+    }
+    input[readonly] {
+      background: #f8cfcf;
+      color: #5a1010;
+      font-weight: 600;
+    }
+    button {
+      display: block;
+      margin: 8px auto 0;
+      padding: 6px 16px;
+      background: #d7c2a4;
+      border: 1px solid #8f7c61;
+      cursor: pointer;
+      font-size: 15px;
+      transition: transform 0.1s ease, box-shadow 0.1s ease;
+    }
+    button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>DIEN TICH HINH CHU NHAT</h1>
+    <div class="row">
+      <label for="length">Chieu dai:</label>
+      <input type="number" id="length" placeholder="Nhap chieu dai" />
+    </div>
+    <div class="row">
+      <label for="width">Chieu rong:</label>
+      <input type="number" id="width" placeholder="Nhap chieu rong" />
+    </div>
+    <div class="row">
+      <label for="area">Dien tich:</label>
+      <input type="text" id="area" readonly />
+    </div>
+    <button id="calcBtn">Tinh</button>
+  </div>
+
+  <script>
+    const lengthInput = document.getElementById('length');
+    const widthInput = document.getElementById('width');
+    const areaInput = document.getElementById('area');
+    const calcBtn = document.getElementById('calcBtn');
+
+    function calcArea() {
+      const lengthVal = parseFloat(lengthInput.value);
+      const widthVal = parseFloat(widthInput.value);
+
+      if (Number.isNaN(lengthVal) || Number.isNaN(widthVal)) {
+        areaInput.value = '';
+        alert('Vui long nhap chieu dai va chieu rong hop le.');
+        return;
+      }
+
+      const area = lengthVal * widthVal;
+      areaInput.value = area;
+    }
+
+    calcBtn.addEventListener('click', calcArea);
+  </script>
+</body>
+</html>

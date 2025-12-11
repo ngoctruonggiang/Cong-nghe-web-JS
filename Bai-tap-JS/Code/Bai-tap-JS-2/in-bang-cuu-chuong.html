@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>In bang cuu chuong</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      background: #f2f5fb;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      padding: 32px 12px 40px;
+    }
+    .panel {
+      width: 520px;
+      background: #fff;
+      border-radius: 4px;
+      border: 1px solid #aac5dd;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+    .panel-header {
+      background: #0b5394;
+      color: #fff;
+      text-align: center;
+      font-size: 24px;
+      padding: 12px 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
+    .panel-body {
+      padding: 14px 20px 18px;
+    }
+    .input-row {
+      background: #dbe9ff;
+      border: 1px solid #b0c9ec;
+      padding: 12px 14px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px 12px;
+    }
+    .input-row label {
+      min-width: 120px;
+      font-weight: 700;
+      color: #1c3f72;
+    }
+    .input-row input {
+      width: 80px;
+      padding: 6px 8px;
+      border: 1px solid #4d7cc4;
+      font-size: 15px;
+      text-align: center;
+    }
+    .button-row {
+      text-align: center;
+      margin-top: 8px;
+    }
+    .button-row button {
+      padding: 8px 22px;
+      font-size: 16px;
+      font-weight: 700;
+      border: 1px solid #6f7a8f;
+      background: #bfbfbf;
+      cursor: pointer;
+      box-shadow: inset 0 -3px 0 rgba(0,0,0,0.2);
+    }
+    .button-row button:hover {
+      filter: brightness(0.95);
+    }
+    .message {
+      margin-top: 12px;
+      font-weight: 700;
+      color: #c43e3e;
+      text-align: center;
+    }
+    .result-note {
+      margin-top: 16px;
+      text-align: center;
+      font-weight: 700;
+      color: #c43e3e;
+    }
+    .result-grid {
+      margin-top: 12px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: space-between;
+    }
+    .table-column {
+      flex: 0 1 112px;
+      background: #e1efff;
+      border: 1px solid #60a2d8;
+      padding: 10px;
+      box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
+    }
+    .table-column .line {
+      font-weight: 600;
+      color: #1b3a66;
+      padding: 2px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="panel">
+    <div class="panel-header">IN BANG CUU CHUONG</div>
+    <div class="panel-body">
+      <div class="input-row">
+        <label for="from">Bat dau tu:</label>
+        <input type="number" id="from" value="7" min="1" />
+        <label for="to">Ket thuc tai:</label>
+        <input type="number" id="to" value="10" min="1" />
+      </div>
+      <div class="button-row">
+        <button id="printBtn">In bang cuu chuong</button>
+      </div>
+      <div class="message" id="message"></div>
+      <p class="result-note">Ket qua sau khi nhan In bang cuu chuong</p>
+      <div class="result-grid" id="resultGrid"></div>
+    </div>
+  </div>
+
+  <script>
+    const fromInput = document.getElementById('from');
+    const toInput = document.getElementById('to');
+    const printBtn = document.getElementById('printBtn');
+    const resultGrid = document.getElementById('resultGrid');
+    const message = document.getElementById('message');
+
+    function renderTables(start, end) {
+      resultGrid.innerHTML = '';
+      for (let n = start; n <= end; n += 1) {
+        const column = document.createElement('div');
+        column.className = 'table-column';
+        for (let i = 1; i <= 10; i += 1) {
+          const line = document.createElement('div');
+          line.className = 'line';
+          line.textContent = `${n} x ${i} = ${n * i}`;
+          column.appendChild(line);
+        }
+        resultGrid.appendChild(column);
+      }
+    }
+
+    function showError(text) {
+      message.textContent = text;
+      resultGrid.innerHTML = '';
+    }
+
+    function handlePrint() {
+      const start = parseInt(fromInput.value, 10);
+      const end = parseInt(toInput.value, 10);
+
+      if (Number.isNaN(start) || Number.isNaN(end)) {
+        showError('Vui long nhap so bat dau va ket thuc hop le.');
+        return;
+      }
+      if (start > end) {
+        showError('So bat dau phai nho hon hoac bang so ket thuc.');
+        return;
+      }
+
+      message.textContent = '';
+      renderTables(start, end);
+    }
+
+    function handleEnter(event) {
+      if (event.key === 'Enter') {
+        handlePrint();
+      }
+    }
+
+    fromInput.addEventListener('keydown', handleEnter);
+    toInput.addEventListener('keydown', handleEnter);
+    printBtn.addEventListener('click', handlePrint);
+
+    renderTables(parseInt(fromInput.value, 10), parseInt(toInput.value, 10));
+  </script>
+</body>
+</html>
