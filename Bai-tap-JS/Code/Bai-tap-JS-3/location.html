@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Locations of Somewhere Coffee Shop</title>
+    <link rel="stylesheet" href="styles/brown_cafe.css" />
+    <link rel="stylesheet" href="styles/slider.css" />
+  </head>
+  <body>
+    <!-- Snow container for JavaScript animation -->
+    <div id="snow-container"></div>
+
+    <!-- Main Container -->
+    <div id="container">
+      <!-- Header with slideshow banner -->
+      <header>
+        <!-- Slideshow Banner -->
+        <div id="banner" class="slideshow-container">
+          <!-- Slide 1 -->
+          <div class="mySlides fade">
+            <div class="numbertext">1 / 3</div>
+            <img src="images/coffee1.png" alt="Coffee Shop Banner 1" class="img_100" />
+            <div class="caption">
+              We are conveniently located in lower Manhattan with plans to
+              expand into Brooklyn in 2013
+              <br />292 Union Square West at 13th St. New York, New York 10003
+              <br />Telephone: 212.555.5555
+            </div>
+          </div>
+
+          <!-- Slide 2 -->
+          <div class="mySlides fade">
+            <div class="numbertext">2 / 3</div>
+            <img src="images/coffee2.jpg" alt="Coffee Shop Banner 2" class="img_100" />
+            <div class="caption">
+              Relax in our cozy coffee house atmosphere and enjoy a fresh Kona
+              blend from your mug
+            </div>
+          </div>
+
+          <!-- Slide 3 -->
+          <div class="mySlides fade">
+            <div class="numbertext">3 / 3</div>
+            <img src="images/coffee3.jpg" alt="Coffee Shop Banner 3" class="img_100" />
+            <div class="caption">
+              Curl up with some chamomile tea and get lost in a good book
+            </div>
+          </div>
+
+          <!-- Previous/Next buttons -->
+          <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+          <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+          <!-- Dots/indicators -->
+          <div class="dots-wrapper">
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
+          </div>
+        </div>
+
+        <!-- Shop Title -->
+        <div id="shop_title">
+          <h1>Somewhere Coffee Shop</h1>
+        </div>
+      </header>
+
+      <!-- Main Content Area -->
+      <main>
+        <!-- Vertical Navigation Menu -->
+        <div id="ver_menu">
+          <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="location.html" class="active">Location</a></li>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+
+          <!-- Coffee cup illustration -->
+          <div id="cafe">
+            <img src="images/coffee_cup-removebg-preview.png" alt="Coffee Cup" />
+          </div>
+        </div>
+
+        <!-- Content Section -->
+        <div id="content">
+          <!-- Page Title with Gold Background -->
+          <div style="background-color: #c9a961; padding: 15px 20px; margin: -20px -20px 20px -20px; border-radius: 5px;">
+            <h2 style="margin: 0; color: #3b2616; font-size: 24px; font-weight: bold;">Somewhere Coffee Shop Locations</h2>
+          </div>
+
+          <p style="text-align: justify; line-height: 1.8;">
+            We are conveniently located in lower manhattan with plans to expand into Brooklyn in 2013
+            <br />292 Union Square West at 13th St. New York, New York 10003
+            <br />Telephone: 212.555.5555
+          </p>
+
+          <h3 style="color: #5c3a21; font-size: 20px; margin: 25px 0 15px 0;">Takeout Available | Delivery Available</h3>
+
+          <p style="line-height: 1.8;">
+            <strong>Delivery Payment:</strong> $12 minimum<br />
+            <strong>Delivery Hours:</strong> Daily, 10am-midnight<br />
+            <strong>Delivery Area:</strong> 8th St. to 26th St., Second Ave. to Seventh Ave.
+          </p>
+
+          <!-- Google Map -->
+          <div style="margin: 20px 0;">
+            <a href="https://www.google.com/maps/place/292+Union+Square+West+at+13th+St.+New+York,+NY+10003" target="_blank" style="color: #0066cc; text-decoration: none;">
+              View larger map
+            </a>
+            <div style="margin-top: 10px; border: 1px solid #ccc; border-radius: 5px; overflow: hidden;">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3024.2219901290355!2d-74.0127718!3d40.7142691!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a1e5e6e5e5d%3A0x1234567890!2s292%20Union%20Square%20West%2C%20New%20York%2C%20NY%2010003!5e0!3m2!1sen!2sus!4v1234567890"
+                width="100%"
+                height="350"
+                style="border: 0;"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+              >
+              </iframe>
+            </div>
+          </div>
+
+          <h3 style="color: #5c3a21; font-size: 20px; margin: 25px 0 15px 0;">How to Get Here</h3>
+          
+          <p style="line-height: 1.8;">
+            <strong>By Subway:</strong> Take line 1, 2, 3, R, or W train to Chambers Street station. We're just a 3-minute walk from the station.
+          </p>
+
+          <p style="line-height: 1.8;">
+            <strong>By Bus:</strong> M5, M20, and M55 buses stop nearby on Broadway.
+          </p>
+
+          <p style="line-height: 1.8;">
+            <strong>By Car:</strong> Parking is available in nearby garages on Murray Street and Warren Street.
+          </p>
+        </div>
+        </div>
+      </main>
+
+      <!-- Footer -->
+      <footer>
+        <div class="footer-links">
+          <a href="#hours">Hours</a>
+          <a href="#news">News</a>
+          <a href="menu.html">Products</a>
+          <a href="#services">Services</a>
+          <a href="contact.html">Survey &amp; Feedback</a>
+        </div>
+        <p class="copyright">&copy; 2025 Somewhere Coffee Shop</p>
+      </footer>
+    </div>
+
+    <script src="scripts/slider.js"></script>
+    <script src="scripts/snow.js"></script>
+  </body>
+</html>

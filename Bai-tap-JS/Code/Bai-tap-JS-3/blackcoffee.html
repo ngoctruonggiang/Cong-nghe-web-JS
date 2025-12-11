@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Black Coffee of Somewhere Coffee Shop</title>
+    <link rel="stylesheet" href="styles/styles.css" />
+    <link rel="stylesheet" href="styles/contentslider.css" />
+  </head>
+  <body>
+    <!-- Snow container for JavaScript animation -->
+    <div id="snow-container"></div>
+
+    <!-- Main Wrapper -->
+    <div class="main-wrapper">
+      <!-- Header with banner and logo -->
+      <header class="header">
+        <div class="banner">
+          <div class="logo-text">Somewhere Coffee Shop</div>
+        </div>
+      </header>
+
+      <!-- Main Content with Navigation + Content Area -->
+      <div class="main-content">
+        <!-- Left Sidebar Navigation -->
+        <nav class="vertical-nav">
+          <ul class="nav-list">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="location.html">Location</a></li>
+            <li><a href="menu.html" class="active">Menu</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+
+          <!-- Coffee cup illustration -->
+          <div class="coffee-cup-sketch">
+            <svg width="120" height="140" viewBox="0 0 120 140">
+              <path
+                d="M30 50 L30 100 Q30 115 45 115 L75 115 Q90 115 90 100 L90 50 Z"
+                fill="none"
+                stroke="#3d2517"
+                stroke-width="3"
+              />
+              <ellipse
+                cx="60"
+                cy="50"
+                rx="30"
+                ry="8"
+                fill="none"
+                stroke="#3d2517"
+                stroke-width="3"
+              />
+              <path
+                d="M90 70 Q105 70 105 85 Q105 100 90 100"
+                fill="none"
+                stroke="#3d2517"
+                stroke-width="3"
+              />
+              <line
+                x1="45"
+                y1="130"
+                x2="75"
+                y2="130"
+                stroke="#3d2517"
+                stroke-width="3"
+              />
+              <path d="M45 115 L45 130" stroke="#3d2517" stroke-width="3" />
+              <path d="M75 115 L75 130" stroke="#3d2517" stroke-width="3" />
+              <path
+                d="M40 70 Q50 78 60 70 Q70 78 80 70"
+                fill="none"
+                stroke="#8B4513"
+                stroke-width="2.5"
+              />
+            </svg>
+          </div>
+        </nav>
+
+        <!-- Content Area -->
+        <div class="content-area">
+          <!-- Page Title Box -->
+          <div class="section-title-box">
+            <h2>Our Black Coffee</h2>
+          </div>
+
+          <!-- Main Content -->
+          <div class="content-body">
+            <p>
+              Experience the pure, unadulterated flavor of our signature black
+              coffee. Carefully selected beans roasted to perfection, bringing
+              out rich, complex flavors with every sip.
+            </p>
+
+            <div class="order-form">
+              <h3>Order Now</h3>
+              <form action="#" method="post">
+                <div class="form-group">
+                  <label for="quantity">Quantity:</label>
+                  <input
+                    type="number"
+                    id="quantity"
+                    name="quantity"
+                    min="1"
+                    max="10"
+                    value="1"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="size">Size:</label>
+                  <select id="size" name="size" required>
+                    <option value="S">Small (8oz) - $2.50</option>
+                    <option value="M" selected>Medium (12oz) - $3.00</option>
+                    <option value="L">Large (16oz) - $3.50</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <input type="submit" value="Buy" class="buy-button" />
+                </div>
+              </form>
+            </div>
+
+            <div id="slider2" class="sliderwrapper">
+              <div class="contentdiv active">
+                <img src="images/black-coffee.jpg" alt="Black Coffee" />
+              </div>
+              <div class="contentdiv">
+                <img src="images/cafe-breve.jpg" alt="Cafe Breve" />
+              </div>
+              <div class="contentdiv">
+                <img src="images/espresso-coffee.jpg" alt="Espresso Coffee" />
+              </div>
+            </div>
+
+            <div id="paginate-slider2" class="pagination">
+              <a href="#" data-slide="0" class="active">
+                <img
+                  src="images/black-coffee-thumb.jpg"
+                  alt="Black Coffee Thumbnail"
+                  width="80"
+                  height="55"
+                />
+              </a>
+              <a href="#" data-slide="1">
+                <img
+                  src="images/cafe-breve-thumb.jpg"
+                  alt="Cafe Breve Thumbnail"
+                  width="80"
+                  height="55"
+                />
+              </a>
+              <a href="#" data-slide="2">
+                <img
+                  src="images/espresso-coffee-thumb.jpg"
+                  alt="Espresso Coffee Thumbnail"
+                  width="80"
+                  height="55"
+                />
+              </a>
+            </div>
+
+            <div class="coffee-info">
+              <h2>Benefits & Effects</h2>
+
+              <h3>Health Benefits of Black Coffee</h3>
+              <p>
+                Black coffee is more than just a morning pick-me-up. When
+                consumed in moderation, it offers numerous health benefits. Rich
+                in antioxidants, black coffee helps fight free radicals in your
+                body, potentially reducing the risk of various diseases. Studies
+                have shown that regular coffee consumption may lower the risk of
+                type 2 diabetes, Parkinson's disease, and certain types of
+                cancer.
+              </p>
+
+              <p>
+                The caffeine in black coffee acts as a natural stimulant,
+                improving mental alertness, focus, and cognitive function. It
+                can enhance physical performance by increasing adrenaline levels
+                and breaking down body fat, making it a popular pre-workout
+                beverage. Additionally, black coffee contains essential
+                nutrients like riboflavin (vitamin B2), niacin (vitamin B3),
+                magnesium, and potassium.
+              </p>
+
+              <p>
+                For those watching their calorie intake, black coffee is an
+                excellent choice as it contains virtually no calories when
+                consumed without added sugar or cream. It can boost metabolism
+                and aid in weight management. The beverage also supports liver
+                health and may help protect against liver diseases such as
+                cirrhosis and fatty liver disease.
+              </p>
+
+              <h3>Possible Side Effects</h3>
+              <p>
+                While black coffee offers many benefits, it's important to be
+                aware of potential side effects, especially when consumed in
+                excess. Too much caffeine can lead to anxiety, jitteriness, and
+                restlessness. Some people may experience digestive issues,
+                including acid reflux or stomach upset, particularly when
+                drinking coffee on an empty stomach.
+              </p>
+
+              <p>
+                Excessive coffee consumption can interfere with sleep patterns,
+                causing insomnia or disrupted sleep quality if consumed too late
+                in the day. It may also lead to increased heart rate and blood
+                pressure in sensitive individuals. Regular heavy consumption can
+                result in caffeine dependency, leading to withdrawal symptoms
+                like headaches, fatigue, and irritability when intake is
+                reduced.
+              </p>
+
+              <p>
+                Coffee can also interfere with the absorption of certain
+                minerals, particularly iron and calcium, when consumed in large
+                quantities. Pregnant women should limit their caffeine intake as
+                recommended by healthcare providers. Additionally, coffee can
+                stain teeth over time and may contribute to bad breath.
+              </p>
+
+              <h3>Tips for Healthy Coffee Enjoyment</h3>
+              <p>
+                To maximize the benefits and minimize the drawbacks of black
+                coffee, consider these tips: Limit your intake to 3-4 cups per
+                day (about 400mg of caffeine). Avoid drinking coffee late in the
+                afternoon or evening to protect your sleep quality. If you have
+                a sensitive stomach, try drinking coffee with food rather than
+                on an empty stomach.
+              </p>
+
+              <p>
+                Stay hydrated by drinking plenty of water throughout the day, as
+                caffeine has mild diuretic effects. Choose high-quality, organic
+                coffee beans when possible to avoid pesticides and ensure the
+                best flavor. If you experience any adverse effects, consider
+                switching to decaf or reducing your consumption. Remember,
+                everyone's tolerance to caffeine is different, so listen to your
+                body and adjust accordingly.
+              </p>
+
+              <p>
+                Quality matters – our coffee is sourced from sustainable farms
+                and roasted in small batches to ensure freshness and optimal
+                flavor. Visit us to experience the difference that quality makes
+                in every cup.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <footer class="footer">
+        <div class="footer-links">
+          <a href="#hours">Hours</a>
+          <a href="#news">News</a>
+          <a href="menu.html">Products</a>
+          <a href="#services">Services</a>
+          <a href="contact.html">Survey &amp; Feedback</a>
+        </div>
+        <p class="copyright">&copy; 2025 Somewhere Coffee Shop</p>
+      </footer>
+    </div>
+
+    <script src="scripts/snow.js"></script>
+    <script src="scripts/contentslider.js"></script>
+  </body>
+</html>

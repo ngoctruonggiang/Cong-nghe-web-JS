@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Welcome to Somewhere Coffee Shop</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- CSS chính cho layout quán cafe -->
+    <link rel="stylesheet" type="text/css" href="styles/brown_cafe.css" />
+    <!-- CSS cho slideshow banner -->
+    <link rel="stylesheet" type="text/css" href="styles/slider.css" />
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico" />
+  </head>
+
+  <body>
+    <!-- Snow container for JavaScript animation -->
+    <div id="snow-container"></div>
+
+    <div id="container">
+      <!-- ================== HEADER + SLIDESHOW ================== -->
+      <header>
+        <section id="banner" class="slideshow-container">
+          <!-- Slide 1 -->
+          <div class="mySlides fade">
+            <div class="numbertext">1 / 3</div>
+            <img
+              src="images/coffee1.png"
+              alt="Coffee Shop Banner 1"
+              class="img_100"
+            />
+            <div class="caption">
+              We are conveniently located in lower Manhattan with plans to
+              expand into Brooklyn in 2013
+              <br />292 Union Square West at 13th St. New York, New York 10003
+              <br />Telephone: 212.555.5555
+            </div>
+          </div>
+
+          <!-- Slide 2 -->
+          <div class="mySlides fade">
+            <div class="numbertext">2 / 3</div>
+            <img
+              src="images/coffee2.jpg"
+              alt="Coffee Shop Banner 2"
+              class="img_100"
+            />
+            <div class="caption">
+              Relax in our cozy coffee house atmosphere and enjoy a fresh Kona
+              blend from your mug
+            </div>
+          </div>
+
+          <!-- Slide 3 -->
+          <div class="mySlides fade">
+            <div class="numbertext">3 / 3</div>
+            <img
+              src="images/coffee3.jpg"
+              alt="Coffee Shop Banner 3"
+              class="img_100"
+            />
+            <div class="caption">
+              Curl up with some chamomile tea and get lost in a good book
+            </div>
+          </div>
+
+          <!-- Nút điều hướng ❮ ❯ -->
+          <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+          <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+          <!-- Chấm tròn dưới slide -->
+          <div class="dots-wrapper">
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
+          </div>
+        </section>
+
+        <!-- Thanh nâu tên quán -->
+        <section id="shop_title">
+          <h1>Somewhere Coffee Shop</h1>
+        </section>
+      </header>
+
+      <!-- ================== MAIN CONTENT ================== -->
+      <main>
+        <!-- ===== Menu dọc bên trái ===== -->
+        <nav id="ver_menu">
+          <section>
+            <a href="home.html" class="active">Home</a>
+            <a href="about.html">About</a>
+            <a href="location.html">Location</a>
+            <a href="menu.html">Menu</a>
+            <a href="contact.html">Contact</a>
+          </section>
+
+          <!-- Ảnh ly cafe ở dưới menu -->
+          <section id="cafe">
+            <img
+              src="images/coffee_cup-removebg-preview.png"
+              alt="Coffee Cup"
+              width="131"
+              height="182"
+            />
+          </section>
+        </nav>
+
+        <!-- ===== Nội dung bên phải ===== -->
+        <section id="content">
+          <header>About Somewhere Coffee Shop</header>
+
+          <p>
+            Somewhere Coffee Co. began as a small coffee cart on the corner of
+            28th and 3rd street. As the lines began to grow, we thought "why not
+            open a coffee shop?" and expanded into our current location. The
+            rest is Somewhere in history. We have been in the coffee business
+            for 8 years and are masters at our craft. We select only the finest
+            beans to go into our blends and strive for excellence in customer
+            satisfaction.
+          </p>
+
+          <p>
+            We offer quiet nooks for sipping and reading your favorite book,
+            catching up with old friends, or simply enjoying a cup outside and
+            watching the world go by. Whatever your coffee conundrum commands,
+            find it at Somewhere.
+          </p>
+
+          <!-- 3 ảnh nằm ngang -->
+          <div class="three-columns">
+            <div><img src="images/coffee1.png" alt="Coffee 1" /></div>
+            <div><img src="images/coffee2.jpg" alt="Coffee 2" /></div>
+            <div><img src="images/coffee3.jpg" alt="Coffee 3" /></div>
+          </div>
+
+          <h2>NEW Maui Wauwi Blends!</h2>
+          <p>
+            Straight from the sun-drenched fields of Hawaii, we are proud to
+            bring you the very best. Our new Maui Wauwi blend combines the
+            subtle Sumatra aroma with the bold taste of Kona in one single
+            satisfying cup. For a limited time only.
+          </p>
+        </section>
+      </main>
+
+      <!-- ================== FOOTER ================== -->
+      <footer>
+        Hours | News | Products | Services | Survey &amp; Feedback
+        <span class="copyright">&copy; 2022</span>
+      </footer>
+    </div>
+    <!-- /#container -->
+
+    <!-- ========== Script slideshow ========== -->
+    <script src="scripts/slider.js"></script>
+
+    <!-- ========== Hiệu ứng tuyết rơi ========== -->
+    <script src="scripts/snow.js"></script>
+  </body>
+</html>
