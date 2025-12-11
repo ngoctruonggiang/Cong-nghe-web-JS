@@ -6,24 +6,12 @@
   const BG_COLOR_KEY = "coffeeShopBgColor";
   const themes = ["theme-brown", "theme-green", "theme-rose"];
 
-  // Theme-specific background color options
-  const themeColors = {
-    "theme-brown": [
-      { name: "Native Brown", value: "#dcb166" },
-      { name: "Light Brown", value: "#F5DEB3" },
-      { name: "Dark Brown", value: "#7b4a20" },
-    ],
-    "theme-green": [
-      { name: "Native Green", value: "#c9dc82" },
-      { name: "Light Green", value: "#e2f0a5" },
-      { name: "Dark Green", value: "#a9bb6b" },
-    ],
-    "theme-rose": [
-      { name: "Native Rose", value: "#f3c4c4" },
-      { name: "Light Rose", value: "#f9dada" },
-      { name: "Dark Rose", value: "#e8a6a6" },
-    ],
-  };
+  // Background color options are now fixed as per the instructions.
+  const backgroundColors = [
+    { name: "Native Brown", value: "#dcb166" },
+    { name: "Light Brown", value: "#F5DEB3" },
+    { name: "Dark Brown", value: "#7b4a20" },
+  ];
 
   // --- DOM ELEMENTS ---
   let themeButtons = [];
@@ -47,25 +35,31 @@
    * Main initialization function
    */
   function init() {
-    const savedTheme = localStorage.getItem(THEME_KEY) || "theme-brown";
+    // 1. Populate the background color dropdown with the fixed brown colors.
+    populateBgColorOptions();
     
-    // Apply the theme. This function now also handles updating the BG color picker
-    // and setting a default BG color.
-    applyTheme(savedTheme, false); // `false` indicates this is not a user click
+    // 2. Load and apply the saved theme.
+    const savedTheme = localStorage.getItem(THEME_KEY) || "theme-brown";
+    applyTheme(savedTheme);
 
-    // Now, check if a specific background color was saved and is valid for the current theme.
-    // If so, apply it over the default.
-    const savedBgColor = localStorage.getItem(BG_COLOR_KEY);
-    const currentThemeColors = (themeColors[savedTheme] || []).map(c => c.value);
+    // 3. Load and apply the saved background color.
+    const savedBgColor = localStorage.getItem(BG_COLOR_KEY) || backgroundColors[0].value;
+    const availableBgColors = backgroundColors.map(c => c.value);
 
-    if (savedBgColor && currentThemeColors.includes(savedBgColor)) {
+    // Check if the saved color is one of the valid options before applying.
+    if (availableBgColors.includes(savedBgColor)) {
       applyBgColor(savedBgColor);
       if (bgColorSelect) {
         bgColorSelect.value = savedBgColor;
       }
+    } else {
+      // If not valid, apply the default and save it.
+      const defaultBgColor = backgroundColors[0].value;
+      applyBgColor(defaultBgColor);
+      localStorage.setItem(BG_COLOR_KEY, defaultBgColor);
     }
 
-    // Attach all event listeners
+    // 4. Attach all event listeners.
     setupEventListeners();
   }
 
@@ -78,7 +72,7 @@
       btn.addEventListener("click", function () {
         const newTheme = this.dataset.theme;
         if (newTheme) {
-          applyTheme(newTheme, true); // `true` indicates this is a user click
+          applyTheme(newTheme);
           localStorage.setItem(THEME_KEY, newTheme);
         }
       });
@@ -95,11 +89,10 @@
   }
 
   /**
-   * Applies a new theme to the page.
+   * Applies a new theme to the page. This no longer affects the background color.
    * @param {string} theme - The name of the theme to apply.
-   * @param {boolean} isUserClick - True if triggered by a user click, changes behavior for BG color.
    */
-  function applyTheme(theme, isUserClick) {
+  function applyTheme(theme) {
     // 1. Update body class for CSS variables
     document.body.classList.remove(...themes);
     if (theme && themes.includes(theme)) {
@@ -110,33 +103,18 @@
     themeButtons.forEach((btn) => {
       btn.classList.toggle("active", btn.dataset.theme === theme);
     });
-
-    // 3. Update the background color picker options
-    updateBgColorOptions(theme);
-
-    // 4. If triggered by a user clicking a new theme, apply the default BG color for that theme.
-    //    On initial load, we wait to see if a specific saved color should be used.
-    if (isUserClick) {
-      const defaultBgColor = themeColors[theme] ? themeColors[theme][0].value : "#dcb166";
-      applyBgColor(defaultBgColor);
-      localStorage.setItem(BG_COLOR_KEY, defaultBgColor);
-      if (bgColorSelect) {
-        bgColorSelect.value = defaultBgColor;
-      }
-    }
   }
 
   /**
-   * Updates the options in the background color dropdown based on the current theme.
-   * @param {string} theme - The currently active theme.
+   * Populates the options in the background color dropdown.
+   * This is now run only once on initialization.
    */
-  function updateBgColorOptions(theme) {
+  function populateBgColorOptions() {
     if (!bgColorSelect) return;
 
-    const colors = themeColors[theme] || themeColors["theme-brown"];
     bgColorSelect.innerHTML = ""; // Clear old options
 
-    colors.forEach((color) => {
+    backgroundColors.forEach((color) => {
       const option = document.createElement("option");
       option.value = color.value;
       option.textContent = color.name;
