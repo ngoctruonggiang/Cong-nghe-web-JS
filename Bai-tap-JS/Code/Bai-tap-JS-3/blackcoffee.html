@@ -15,6 +15,21 @@
     <div class="main-wrapper">
       <!-- Header with banner and logo -->
       <header class="header">
+        <div class="theme-switcher">
+          <div class="theme-buttons">
+            <button class="theme-btn theme-brown-btn active" data-theme="theme-brown" title="Brown Theme"></button>
+            <button class="theme-btn theme-green-btn" data-theme="theme-green" title="Green Theme"></button>
+            <button class="theme-btn theme-rose-btn" data-theme="theme-rose" title="Rose Theme"></button>
+          </div>
+          <div class="bg-picker">
+            <label for="bg-color-select">BG Color:</label>
+            <select id="bg-color-select">
+              <option value="#dcb166">Native Brown</option>
+              <option value="#F5DEB3">Light Brown</option>
+              <option value="#7b4a20">Dark Brown</option>
+            </select>
+          </div>
+        </div>
         <div class="banner">
           <div class="logo-text">Somewhere Coffee Shop</div>
         </div>
@@ -266,5 +281,6 @@
 
     <script src="scripts/snow.js"></script>
     <script src="scripts/contentslider.js"></script>
+    <script src="scripts/theme-switcher.js"></script>
   </body>
 </html>

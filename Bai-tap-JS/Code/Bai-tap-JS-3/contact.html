@@ -15,6 +15,21 @@
     <div id="container">
       <!-- Header with slideshow banner -->
       <header>
+        <div class="theme-switcher">
+          <div class="theme-buttons">
+            <button class="theme-btn theme-brown-btn active" data-theme="theme-brown" title="Brown Theme"></button>
+            <button class="theme-btn theme-green-btn" data-theme="theme-green" title="Green Theme"></button>
+            <button class="theme-btn theme-rose-btn" data-theme="theme-rose" title="Rose Theme"></button>
+          </div>
+          <div class="bg-picker">
+            <label for="bg-color-select">BG Color:</label>
+            <select id="bg-color-select">
+              <option value="#dcb166">Native Brown</option>
+              <option value="#F5DEB3">Light Brown</option>
+              <option value="#7b4a20">Dark Brown</option>
+            </select>
+          </div>
+        </div>
         <!-- Slideshow Banner -->
         <div id="banner" class="slideshow-container">
           <!-- Slide 1 -->
@@ -65,151 +80,8 @@
           <h1>Somewhere Coffee Shop</h1>
         </div>
       </header>
-
-      <!-- Main Content Area -->
-      <main>
-        <!-- Vertical Navigation Menu -->
-        <div id="ver_menu">
-          <ul>
-            <li><a href="home.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="location.html">Location</a></li>
-            <li><a href="menu.html">Menu</a></li>
-            <li><a href="contact.html" class="active">Contact</a></li>
-          </ul>
-
-          <!-- Coffee cup illustration -->
-          <div id="cafe">
-            <img src="images/coffee_cup-removebg-preview.png" alt="Coffee Cup" />
-          </div>
-        </div>
-
-        <!-- Content Section -->
-        <div id="content">
-          <!-- Page Title with Gold Background -->
-          <div style="background-color: #c9a961; padding: 15px 20px; margin: -20px -20px 20px -20px; border-radius: 5px;">
-            <h2 style="margin: 0; color: #3b2616; font-size: 24px; font-weight: bold;">Contact us</h2>
-          </div>
-
-          <p style="text-align: justify; line-height: 1.8; margin-bottom: 20px;">
-            <strong>Thank you for your interest. Please send us comments using the form below:</strong>
-          </p>
-
-          <!-- Contact Form -->
-          <form action="#" method="post" style="margin-bottom: 30px;">
-            <table style="width: 100%; border-collapse: collapse;">
-              <tr>
-                <td style="padding: 8px 10px; vertical-align: middle; width: 120px;">
-                  <label for="firstName" style="font-size: 14px;">FirstName</label>
-                </td>
-                <td style="padding: 8px 0;">
-                  <input
-                    type="text"
-                    id="firstName"
-                    name="firstName"
-                    style="width: 95%; padding: 8px; border: 2px dashed #999; border-radius: 4px; font-size: 14px;"
-                    required
-                  />
-                </td>
-              </tr>
-              <tr>
-                <td style="padding: 8px 10px; vertical-align: middle;">
-                  <label for="lastName" style="font-size: 14px;">LastName</label>
-                </td>
-                <td style="padding: 8px 0;">
-                  <input
-                    type="text"
-                    id="lastName"
-                    name="lastName"
-                    style="width: 95%; padding: 8px; border: 2px dashed #999; border-radius: 4px; font-size: 14px;"
-                    required
-                  />
-                </td>
-              </tr>
-              <tr>
-                <td style="padding: 8px 10px; vertical-align: middle;">
-                  <label for="phone" style="font-size: 14px;">Phone</label>
-                </td>
-                <td style="padding: 8px 0;">
-                  <input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    style="width: 95%; padding: 8px; border: 2px dashed #999; border-radius: 4px; font-size: 14px;"
-                  />
-                </td>
-              </tr>
-              <tr>
-                <td style="padding: 8px 10px; vertical-align: middle;">
-                  <label for="email" style="font-size: 14px;">Email</label>
-                </td>
-                <td style="padding: 8px 0;">
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    style="width: 95%; padding: 8px; border: 2px dashed #999; border-radius: 4px; font-size: 14px;"
-                    required
-                  />
-                </td>
-              </tr>
-              <tr>
-                <td style="padding: 8px 10px; vertical-align: top;">
-                  <label for="comments" style="font-size: 14px;">Comments</label>
-                </td>
-                <td style="padding: 8px 0;">
-                  <textarea
-                    id="comments"
-                    name="comments"
-                    rows="5"
-                    style="width: 95%; padding: 8px; border: 2px dashed #999; border-radius: 4px; font-size: 14px; resize: vertical;"
-                  ></textarea>
-                </td>
-              </tr>
-              <tr>
-                <td colspan="2" style="padding: 10px 0;">
-                  <input type="checkbox" name="chkSendMe" id="chkSendMe" style="margin-right: 8px;" />
-                  <label for="chkSendMe" style="font-size: 14px;">Send me your monthly newsletter</label>
-                </td>
-              </tr>
-              <tr>
-                <td colspan="2" style="padding: 10px 0;">
-                  <input
-                    type="submit"
-                    value="Submit"
-                    style="
-                      background-color: #5c3a21;
-                      color: white;
-                      padding: 10px 30px;
-                      border: none;
-                      border-radius: 5px;
-                      font-size: 16px;
-                      cursor: pointer;
-                      font-weight: bold;
-                    "
-                  />
-                </td>
-              </tr>
-            </table>
-          </form>
-        </div>
-        </div>
-      </main>
-
-      <!-- Footer -->
-      <footer>
-        <div class="footer-links">
-          <a href="#hours">Hours</a>
-          <a href="#news">News</a>
-          <a href="menu.html">Products</a>
-          <a href="#services">Services</a>
-          <a href="contact.html">Survey &amp; Feedback</a>
-        </div>
-        <p class="copyright">&copy; 2025 Somewhere Coffee Shop</p>
-      </footer>
-    </div>
-
     <script src="scripts/slider.js"></script>
     <script src="scripts/snow.js"></script>
+    <script src="scripts/theme-switcher.js"></script>
   </body>
 </html>
