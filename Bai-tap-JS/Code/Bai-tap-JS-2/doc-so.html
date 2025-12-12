@@ -1,188 +1,201 @@
 <!DOCTYPE html>
 <html lang="vi">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Doc so</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Georgia, "Times New Roman", serif;
-      background: #def1ff;
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      min-height: 100vh;
-      padding: 28px 12px 40px;
-    }
-    .card {
-      width: 460px;
-      background: #e3f0ff;
-      border: 1px solid #7eaed6;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.12);
-    }
-    .card-header {
-      background: #0b3f96;
-      color: #ffffff;
-      font-size: 26px;
-      text-align: center;
-      padding: 14px 10px;
-      font-weight: 700;
-      letter-spacing: 2px;
-    }
-    .card-body {
-      padding: 14px 20px 16px;
-    }
-    .form-row {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin-bottom: 10px;
-    }
-    .form-row label {
-      min-width: 120px;
-      font-weight: 600;
-      color: #12356d;
-    }
-    .form-row input[type="number"] {
-      width: 120px;
-      padding: 6px 8px;
-      border: 1px solid #acc6ea;
-      font-size: 16px;
-      text-align: right;
-    }
-    button {
-      padding: 6px 18px;
-      font-size: 16px;
-      font-weight: 700;
-      border: 1px solid #4e5e82;
-      background: #d2d7e3;
-      cursor: pointer;
-      box-shadow: inset 0 -3px 0 rgba(0,0,0,0.2);
-    }
-    button:hover {
-      filter: brightness(0.95);
-    }
-    .result-row {
-      margin-top: 12px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .result-row label {
-      min-width: 120px;
-      font-weight: 600;
-      color: #5c386c;
-    }
-    .result-row input {
-      flex: 1;
-      padding: 8px 10px;
-      border: 1px solid #b5c0d6;
-      background: #fff7c1;
-      font-weight: 700;
-      color: #a73232;
-    }
-    .error {
-      margin-top: 10px;
-      min-height: 20px;
-      text-align: center;
-      font-weight: 600;
-      color: #a01212;
-    }
-  </style>
-</head>
-<body>
-  <div class="card">
-    <div class="card-header">DOC SO</div>
-    <div class="card-body">
-      <div class="form-row">
-        <label for="numberInput">Nhap so (0 -&gt; 999):</label>
-        <input type="number" id="numberInput" min="0" max="999" value="999" />
-        <button id="readBtn">Doc so</button>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Doc so</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: Georgia, "Times New Roman", serif;
+        background: #def1ff;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        min-height: 100vh;
+        padding: 28px 12px 40px;
+      }
+      .card {
+        width: 460px;
+        background: #e3f0ff;
+        border: 1px solid #7eaed6;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+      }
+      .card-header {
+        background: #0b3f96;
+        color: #ffffff;
+        font-size: 26px;
+        text-align: center;
+        padding: 14px 10px;
+        font-weight: 700;
+        letter-spacing: 2px;
+      }
+      .card-body {
+        padding: 14px 20px 16px;
+      }
+      .form-row {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin-bottom: 10px;
+      }
+      .form-row label {
+        min-width: 120px;
+        font-weight: 600;
+        color: #12356d;
+      }
+      .form-row input[type="number"] {
+        width: 120px;
+        padding: 6px 8px;
+        border: 1px solid #acc6ea;
+        font-size: 16px;
+        text-align: right;
+      }
+      button {
+        padding: 6px 18px;
+        font-size: 16px;
+        font-weight: 700;
+        border: 1px solid #4e5e82;
+        background: #d2d7e3;
+        cursor: pointer;
+        box-shadow: inset 0 -3px 0 rgba(0, 0, 0, 0.2);
+      }
+      button:hover {
+        filter: brightness(0.95);
+      }
+      .result-row {
+        margin-top: 12px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .result-row label {
+        min-width: 120px;
+        font-weight: 600;
+        color: #5c386c;
+      }
+      .result-row input {
+        flex: 1;
+        padding: 8px 10px;
+        border: 1px solid #b5c0d6;
+        background: #fff7c1;
+        font-weight: 700;
+        color: #a73232;
+      }
+      .error {
+        margin-top: 10px;
+        min-height: 20px;
+        text-align: center;
+        font-weight: 600;
+        color: #a01212;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <div class="card-header">DOC SO</div>
+      <div class="card-body">
+        <div class="form-row">
+          <label for="numberInput">Nhap so (0 -&gt; 999):</label>
+          <input type="number" id="numberInput" min="0" max="999" value="999" />
+          <button id="readBtn">Doc so</button>
+        </div>
+        <div class="result-row">
+          <label for="textOutput">Bang chu:</label>
+          <input type="text" id="textOutput" readonly />
+        </div>
+        <div class="error" id="error"></div>
       </div>
-      <div class="result-row">
-        <label for="textOutput">Bang chu:</label>
-        <input type="text" id="textOutput" readonly />
-      </div>
-      <div class="error" id="error"></div>
     </div>
-  </div>
 
-  <script>
-    const numberInput = document.getElementById('numberInput');
-    const textOutput = document.getElementById('textOutput');
-    const readBtn = document.getElementById('readBtn');
-    const errorBox = document.getElementById('error');
+    <script>
+      const numberInput = document.getElementById("numberInput");
+      const textOutput = document.getElementById("textOutput");
+      const readBtn = document.getElementById("readBtn");
+      const errorBox = document.getElementById("error");
 
-    const units = ['Khong','Mot','Hai','Ba','Bon','Nam','Sau','Bay','Tam','Chin'];
+      const units = [
+        "Khong",
+        "Mot",
+        "Hai",
+        "Ba",
+        "Bon",
+        "Nam",
+        "Sau",
+        "Bay",
+        "Tam",
+        "Chin",
+      ];
 
-    function readUnderHundred(num) {
-      if (num < 10) {
-        return units[num];
+      function readUnderHundred(num) {
+        if (num < 10) {
+          return units[num];
+        }
+        const tens = Math.floor(num / 10);
+        const ones = num % 10;
+        if (tens === 1) {
+          return ones === 0
+            ? "Muoi"
+            : `Muoi ${ones === 5 ? "Nam" : units[ones]}`;
+        }
+        let words = `${units[tens]} Muoi`;
+        if (ones > 0) {
+          const onesWord = ones === 5 ? "Nam" : units[ones];
+          words += ` ${onesWord}`;
+        }
+        return words;
       }
-      const tens = Math.floor(num / 10);
-      const ones = num % 10;
-      if (tens === 1) {
-        return ones === 0 ? 'Muoi' : `Muoi ${ones === 5 ? 'Nam' : units[ones]}`;
-      }
-      let words = `${units[tens]} Muoi`;
-      if (ones > 0) {
-        const onesWord = ones === 5 ? 'Nam' : units[ones];
-        words += ` ${onesWord}`;
-      }
-      return words;
-    }
 
-    function numberToWords(value) {
-      if (value === 0) {
-        return 'Khong';
+      function numberToWords(value) {
+        if (value === 0) {
+          return "Khong";
+        }
+        const hundreds = Math.floor(value / 100);
+        let remainder = value % 100;
+        const parts = [];
+        if (hundreds > 0) {
+          parts.push(`${units[hundreds]} Tram`);
+        }
+        if (remainder > 0) {
+          if (remainder < 10 && hundreds > 0) {
+            parts.push(`Le ${units[remainder]}`);
+          } else {
+            parts.push(readUnderHundred(remainder));
+          }
+        }
+        return parts.join(" ");
       }
-      const hundreds = Math.floor(value / 100);
-      let remainder = value % 100;
-      const parts = [];
-      if (hundreds > 0) {
-        parts.push(`${units[hundreds]} Tram`);
+
+      function showError(text) {
+        errorBox.textContent = text;
+        textOutput.value = "";
       }
-      if (remainder > 0) {
-        if (remainder < 10 && hundreds > 0) {
-          parts.push(`Le ${units[remainder]}`);
-        } else {
-          parts.push(readUnderHundred(remainder));
+
+      function handleRead() {
+        const value = parseInt(numberInput.value, 10);
+        if (Number.isNaN(value)) {
+          showError("Vui long nhap mot so tu 0 den 999.");
+          return;
+        }
+        if (value < 0 || value > 999) {
+          showError("So phai nam trong khoang 0 - 999.");
+          return;
+        }
+        errorBox.textContent = "";
+        textOutput.value = numberToWords(value);
+      }
+
+      function handleEnter(event) {
+        if (event.key === "Enter") {
+          handleRead();
         }
       }
-      return parts.join(' ');
-    }
 
-    function showError(text) {
-      errorBox.textContent = text;
-      textOutput.value = '';
-    }
+      numberInput.addEventListener("keydown", handleEnter);
+      readBtn.addEventListener("click", handleRead);
 
-    function handleRead() {
-      const value = parseInt(numberInput.value, 10);
-      if (Number.isNaN(value)) {
-        showError('Vui long nhap mot so tu 0 den 999.');
-        return;
-      }
-      if (value < 0 || value > 999) {
-        showError('So phai nam trong khoang 0 - 999.');
-        return;
-      }
-      errorBox.textContent = '';
-      textOutput.value = numberToWords(value);
-    }
-
-    function handleEnter(event) {
-      if (event.key === 'Enter') {
-        handleRead();
-      }
-    }
-
-    numberInput.addEventListener('keydown', handleEnter);
-    readBtn.addEventListener('click', handleRead);
-
-    handleRead();
-  </script>
-</body>
+      handleRead();
+    </script>
+  </body>
 </html>

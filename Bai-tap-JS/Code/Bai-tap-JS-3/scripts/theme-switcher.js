@@ -6,12 +6,18 @@
   const BG_COLOR_KEY = "coffeeShopBgColor";
   const themes = ["theme-brown", "theme-green", "theme-rose"];
 
-  // Background color options are now fixed as per the instructions.
+  // Background color options include the fixed browns plus each theme color.
   const backgroundColors = [
     { name: "Native Brown", value: "#dcb166" },
     { name: "Light Brown", value: "#F5DEB3" },
     { name: "Dark Brown", value: "#7b4a20" },
   ];
+
+  const themeBackgroundColors = {
+    "theme-brown": "#dcb166",
+    "theme-green": "#c9dc82",
+    "theme-rose": "#f3c4c4",
+  };
 
   // --- DOM ELEMENTS ---
   let themeButtons = [];
@@ -35,7 +41,7 @@
    * Main initialization function
    */
   function init() {
-    // 1. Populate the background color dropdown with the fixed brown colors.
+    // 1. Populate the background color dropdown with the configured palette.
     populateBgColorOptions();
     
     // 2. Load and apply the saved theme.
@@ -72,7 +78,7 @@
       btn.addEventListener("click", function () {
         const newTheme = this.dataset.theme;
         if (newTheme) {
-          applyTheme(newTheme);
+          applyTheme(newTheme, { syncBgColor: true });
           localStorage.setItem(THEME_KEY, newTheme);
         }
       });
@@ -89,10 +95,12 @@
   }
 
   /**
-   * Applies a new theme to the page. This no longer affects the background color.
+   * Applies a new theme to the page and optionally syncs the background color.
    * @param {string} theme - The name of the theme to apply.
+   * @param {Object} options - Optional behavior overrides.
+   * @param {boolean} options.syncBgColor - When true, force the background to match the theme.
    */
-  function applyTheme(theme) {
+  function applyTheme(theme, { syncBgColor = false } = {}) {
     // 1. Update body class for CSS variables
     document.body.classList.remove(...themes);
     if (theme && themes.includes(theme)) {
@@ -103,6 +111,11 @@
     themeButtons.forEach((btn) => {
       btn.classList.toggle("active", btn.dataset.theme === theme);
     });
+
+    // 3. Optionally sync the background color with the selected theme.
+    if (syncBgColor) {
+      syncThemeBackgroundColor(theme);
+    }
   }
 
   /**
@@ -128,5 +141,30 @@
    */
   function applyBgColor(color) {
     document.body.style.backgroundColor = color;
+  }
+
+  /**
+   * Ensures the background color follows the current theme selection.
+   */
+  function syncThemeBackgroundColor(theme) {
+    const themeColor = themeBackgroundColors[theme];
+    if (!themeColor) {
+      return;
+    }
+
+    applyBgColor(themeColor);
+    localStorage.setItem(BG_COLOR_KEY, themeColor);
+
+    if (!bgColorSelect) {
+      return;
+    }
+
+    const hasMatchingOption = Array.from(bgColorSelect.options).some(
+      (option) => option.value === themeColor
+    );
+
+    if (hasMatchingOption) {
+      bgColorSelect.value = themeColor;
+    }
   }
 })();
